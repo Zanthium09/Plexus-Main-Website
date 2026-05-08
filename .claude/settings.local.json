@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.legrand.co.in)",
+      "WebFetch(domain:www.matrixcomsec.com)",
+      "WebFetch(domain:www.dahuasecurity.com)",
+      "WebFetch(domain:cdn.legrand.co.in)"
+    ]
+  }
+}
