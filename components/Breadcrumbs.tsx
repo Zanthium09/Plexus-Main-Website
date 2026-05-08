@@ -5,7 +5,7 @@ interface Crumb {
   href?: string;
 }
 
-const SITE_URL = "https://plexustelesolutions.com";
+const SITE_URL = "https://www.plexustelesolutions.com";
 
 export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   const jsonLd = {

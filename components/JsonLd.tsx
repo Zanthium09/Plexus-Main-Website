@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const SITE_URL = "https://plexustelesolutions.com";
+const SITE_URL = "https://www.plexustelesolutions.com";
 
 type Crumb = { name: string; url: string };
 

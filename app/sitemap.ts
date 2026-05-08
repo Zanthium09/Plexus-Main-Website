@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://plexustelesolutions.com";
+const SITE_URL = "https://www.plexustelesolutions.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

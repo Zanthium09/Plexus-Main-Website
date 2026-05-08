@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
-const SITE_URL = "https://plexustelesolutions.com";
+const SITE_URL = "https://www.plexustelesolutions.com";
 
 const inter = Inter({
   subsets: ["latin"],
