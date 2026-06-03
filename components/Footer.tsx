@@ -3,6 +3,42 @@
 import Link from "next/link";
 import AnimateIn, { StaggerContainer } from "./AnimateIn";
 
+const SITE_URL = "https://www.plexustelesolutions.com";
+
+function ShareButton() {
+  const handleShare = async () => {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: "Plexus Tele-Solutions",
+          text: "Check out Plexus Tele-Solutions — India's leading telecom, security & AV infrastructure provider since 1989.",
+          url: SITE_URL,
+        });
+      } catch {
+        // user cancelled — do nothing
+      }
+    } else if (typeof navigator !== "undefined" && navigator.clipboard) {
+      await navigator.clipboard.writeText(SITE_URL);
+      alert("Link copied to clipboard!");
+    } else {
+      window.open(
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(SITE_URL)}`,
+        "_blank"
+      );
+    }
+  };
+
+  return (
+    <button
+      aria-label="Share this website"
+      onClick={handleShare}
+      className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white hover:bg-secondary transition-colors duration-200"
+    >
+      <span className="material-symbols-outlined text-sm">share</span>
+    </button>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-zinc-50 border-t border-zinc-800 pt-16 pb-8 relative overflow-hidden">
@@ -19,26 +55,20 @@ export default function Footer() {
           </p>
           <div className="mt-8 flex gap-4">
             <a
-              aria-label="Call"
-              href="tel:+18007539870"
+              aria-label="Call Plexus Tele-Solutions"
+              href="tel:+917045405405"
               className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white hover:bg-secondary transition-colors duration-200"
             >
               <span className="material-symbols-outlined text-sm">call</span>
             </a>
             <a
-              aria-label="Email"
+              aria-label="Email us"
               href="mailto:sales@plexussol.net"
               className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white hover:bg-secondary transition-colors duration-200"
             >
               <span className="material-symbols-outlined text-sm">mail</span>
             </a>
-            <a
-              aria-label="Share"
-              href="#"
-              className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-white hover:bg-secondary transition-colors duration-200"
-            >
-              <span className="material-symbols-outlined text-sm">share</span>
-            </a>
+            <ShareButton />
           </div>
         </div>
         <div>
@@ -153,7 +183,7 @@ export default function Footer() {
       </StaggerContainer>
       <div className="max-w-[1280px] mx-auto px-6 mt-16 pt-8 border-t border-zinc-900 text-center md:text-left relative z-10">
         <p className="font-inter text-sm text-zinc-500">
-          © 2024 Plexus Tele-Solutions. All rights reserved.
+          © 2026 Plexus Tele-Solutions. All rights reserved.
         </p>
       </div>
     </footer>

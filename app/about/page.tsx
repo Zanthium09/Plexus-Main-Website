@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimateIn, { StaggerContainer } from "@/components/AnimateIn";
+import DirectorCard from "@/components/DirectorCard";
 
 export const metadata: Metadata = {
   title: "About Plexus Tele-Solutions | 35+ Years Powering Indian Enterprises",
@@ -29,9 +30,10 @@ const heroImg =
 
 const directors = [
   {
-    name: "Deepak",
-    role: "Technical Director",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA0Uf1zzxGkLHluLwm7jYc-bQlSCIB1Z6wYdywX8-vqtiFa1TMCrKJ-Hr3ShQ7_T0GbtQh5iepL1ExUcD0d-I0crpjYPpVgxBbDe8W4M0F5ZOnuK-H608fSzuXDsdI-U60v7ZgTwouxfGM-3if81sWvgO9HaFwhAYzpfUV3KwI6fMqDfDoVLQ-rDpJhSwv8HxrARuhL35UEGWzQxXk12967mGwILyCcA-v2Yvby6rV7dNUJ6vFo2uAqgnQfEEr4_VzXVrzy86jht-np",
+    name: "Deepak Satish Patwatkar",
+    role: "Managing Director",
+    linkedin: "https://www.linkedin.com/in/deepak-patwatkar-36967a177/",
+    img: "/Director-img.jpeg",
   },
 ];
 
@@ -259,24 +261,7 @@ export default function AboutPage() {
           </AnimateIn>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
             {directors.map((d) => (
-              <div key={d.name} className="group">
-                <div className="aspect-[4/5] bg-surface-container-high mb-4 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 relative">
-                  <Image src={d.img} alt={`${d.name}, ${d.role}`} fill className="object-cover" />
-                </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-h3 text-lg font-bold">{d.name}</h4>
-                    <p className="text-sm text-on-surface-variant">{d.role}</p>
-                  </div>
-                  <a
-                    href="#"
-                    aria-label={`${d.name} profile link`}
-                    className="w-8 h-8 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                  >
-                    <span className="material-symbols-outlined text-sm">link</span>
-                  </a>
-                </div>
-              </div>
+              <DirectorCard key={d.name} d={d} />
             ))}
           </StaggerContainer>
         </div>

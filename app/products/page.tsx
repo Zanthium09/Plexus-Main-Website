@@ -941,11 +941,13 @@ export default function ProductsPage() {
   const [activeBrand, setActiveBrand] = useState<BrandKey>("Matrix");
   const [brandCat, setBrandCat] = useState("All");
   const [page, setPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const switchBrand = (brand: BrandKey) => {
     setActiveBrand(brand);
     setBrandCat("All");
     setPage(1);
+    setSearchQuery("");
   };
 
   const switchCat = (cat: string) => {
@@ -954,10 +956,20 @@ export default function ProductsPage() {
   };
 
   const current = brandData[activeBrand];
-  const filtered =
-    brandCat === "All"
-      ? current.products
-      : current.products.filter((p) => p.category === brandCat);
+
+  // When a search query is active, search across ALL brands
+  const filtered = searchQuery.trim()
+    ? Object.values(brandData)
+        .flatMap((b) => b.products)
+        .filter(
+          (p) =>
+            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.category.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+    : brandCat === "All"
+    ? current.products
+    : current.products.filter((p) => p.category === brandCat);
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
@@ -987,8 +999,44 @@ export default function ProductsPage() {
       <section className="py-section-padding bg-surface">
         <div className="max-w-[1280px] mx-auto px-8">
 
+          {/* Search bar */}
+          <div className="mb-8 relative">
+            <input
+              id="product-search"
+              type="text"
+              placeholder="Search products by name, category or description..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setPage(1);
+              }}
+              className="w-full border border-outline-variant bg-white px-5 py-3.5 pr-12 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-zinc-400"
+            />
+            {searchQuery ? (
+              <button
+                onClick={() => { setSearchQuery(""); setPage(1); }}
+                aria-label="Clear search"
+                className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+              >
+                close
+              </button>
+            ) : (
+              <span
+                className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant pointer-events-none"
+                aria-hidden="true"
+              >
+                search
+              </span>
+            )}
+            {searchQuery && (
+              <p className="mt-2 text-xs text-on-surface-variant">
+                {filtered.length} result{filtered.length !== 1 ? "s" : ""} found across all brands for &quot;{searchQuery}&quot;
+              </p>
+            )}
+          </div>
+
           {/* Brand tabs */}
-          <div className="flex border-b-2 border-outline-variant mb-10">
+          <div className={`flex border-b-2 border-outline-variant mb-10 ${searchQuery ? "opacity-40 pointer-events-none" : ""}`}>
             {BRANDS.map((brand) => (
               <button
                 key={brand}
