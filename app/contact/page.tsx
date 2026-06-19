@@ -3,21 +3,20 @@
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AnimateIn, { StaggerContainer } from "@/components/AnimateIn";
+import LocationsMap, { locations } from "@/components/LocationsMap";
 import { useState } from "react";
 
 const heroImg =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCmcjOg2zMbswC8qV3mTosllMwzEPFs3RwF7oAySmZgC_-8VOF_ddlFar2uUBy905NQTnQbNnAiAofWxFHi4K9CC44QX_9OtXJpNEsCtQvkfcOeSaVa_Q8f_Mb7lG_1etJHn8mi0qUHrrd8GGAhITqbCOSSgIEBgLICDRBQi-T-09D9W2kfHZ_cQMtLOdXp1vbW1kuGaKggJ4gfwLF2qWez2yxZqHr3985TwkfQGwjsiaaYediezHpCiPRPuVuncV2LprtWx1jv6QM1";
-const mapImg =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAypeM8E5iC8ofTTeJDSl4hMLm3iYg13_JFs59NcijlUnXWP6S3shAnHy11fBu3G5sRQ619D3RnhAarZsBmTLuGl0BMY3u0uKgrl1qA5epJFW6iwyNija0n_WpsGG6dDOUUUjkePAEPEjw9b67fkjynKO7kuqJ_hCKSCb-0SLQU-HWMQtVf5nxdclaAxEHHZlmvbYSo7Bh5ywH8VUwI4bN-Oe2L5KFsRd67h5GzEzWZabio0FZdqI2e7TgiMEHhjXrLbjhyjzsl65Gz";
 
 const tabs = ["General", "Request Quote", "Partner/Dealer", "Support"];
 
-// Route to support@ for Support tab, sales@ for all others
 const tabEmail = (tab: string) =>
   tab === "Support" ? "support@plexussol.net" : "sales@plexussol.net";
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState("General");
+  const [activeLocation, setActiveLocation] = useState("dombivli");
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
@@ -88,107 +87,79 @@ export default function ContactPage() {
       {/* Locations */}
       <section className="py-section-padding px-8 bg-surface" id="locations">
         <div className="max-w-[1280px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-            <div className="lg:col-span-4 flex flex-col gap-8">
-              <h2 className="font-h2 text-h2 text-primary mb-2">
-                Our Locations
-              </h2>
-              {[
-                {
-                  name: "Dombivli HQ",
-                  tag: "Global Operations Center",
-                  address: "RL-113 Lata Kunj, Milap Nagar, MIDC, Dombivli East - 421203, Maharashtra",
-                  phone: "+91 7045405405",
-                  email: "sales@plexussol.net",
-                },
-                {
-                  name: "Andheri Branch",
-                  tag: "Tech & Media Hub",
-                  address: "A-102, New India Heights, Opp. Police Lane, Opp. Andheri Railway Station, Andheri (East), Mumbai",
-                  phone: "022-25109063",
-                  email: "sales@plexussol.net",
-                },
-              ].map((loc) => (
-                <div
-                  key={loc.name}
-                  className="p-8 bg-white border border-outline-variant rounded shadow-sm hover:border-primary transition-all"
-                >
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <h3 className="font-h3 text-h3 text-primary">
-                        {loc.name}
-                      </h3>
-                      <p className="font-label-caps text-on-surface-variant text-[10px] mt-1">
-                        {loc.tag}
+          <div className="p-8 border border-outline-variant rounded-lg bg-white">
+            <h2 className="font-h2 text-h2 text-primary mb-8">Our Locations</h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* Left: stacked location cards */}
+              <div className="lg:col-span-4 flex flex-col gap-6">
+                {locations.map((loc) => (
+                  <div
+                    key={loc.id}
+                    onClick={() => setActiveLocation(loc.id)}
+                    className={`flex-1 p-6 border rounded-lg transition-all cursor-pointer ${
+                      activeLocation === loc.id
+                        ? "border-primary ring-1 ring-primary"
+                        : "border-outline-variant hover:border-primary"
+                    }`}
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="font-h3 text-h3 text-primary">{loc.name}</h3>
+                        <p className="font-label-caps text-on-surface-variant text-[10px] mt-1">
+                          {loc.tag}
+                        </p>
+                      </div>
+                      <span className="material-symbols-outlined text-secondary">
+                        location_on
+                      </span>
+                    </div>
+                    <div className="space-y-3 font-body-md text-on-surface-variant text-sm">
+                      <p className="flex items-start gap-3">
+                        <span className="material-symbols-outlined text-sm mt-1">
+                          map
+                        </span>
+                        <span>{loc.address}</span>
+                      </p>
+                      <p className="flex items-center gap-3">
+                        <span className="material-symbols-outlined text-sm">
+                          call
+                        </span>
+                        <a
+                          href={`tel:${loc.phone.replace(/\s/g, "")}`}
+                          className="hover:text-primary"
+                        >
+                          {loc.phone}
+                        </a>
+                      </p>
+                      <p className="flex items-center gap-3">
+                        <span className="material-symbols-outlined text-sm">
+                          mail
+                        </span>
+                        <a href={`mailto:${loc.email}`} className="hover:text-primary">
+                          {loc.email}
+                        </a>
                       </p>
                     </div>
-                    <span className="material-symbols-outlined text-secondary">
-                      location_on
-                    </span>
+
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        loc.address
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="mt-6 w-full inline-block text-center border border-primary text-primary font-label-caps py-2.5 hover:bg-primary hover:text-white transition-all text-sm"
+                    >
+                      Get Directions
+                    </a>
                   </div>
-                  <div className="space-y-4 font-body-md text-on-surface-variant">
-                    <p className="flex items-start gap-3">
-                      <span className="material-symbols-outlined text-sm mt-1">
-                        map
-                      </span>
-                      <span>{loc.address}</span>
-                    </p>
-                    <p className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-sm">
-                        call
-                      </span>
-                      <a
-                        href={`tel:${loc.phone.replace(/\s/g, "")}`}
-                        className="hover:text-primary"
-                      >
-                        {loc.phone}
-                      </a>
-                    </p>
-                    <p className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-sm">
-                        mail
-                      </span>
-                      <a
-                        href={`mailto:${loc.email}`}
-                        className="hover:text-primary"
-                      >
-                        {loc.email}
-                      </a>
-                    </p>
-                  </div>
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(loc.address)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 w-full inline-block text-center border border-primary text-primary font-label-caps py-3 hover:bg-primary hover:text-white transition-all"
-                  >
-                    Get Directions
-                  </a>
-                </div>
-              ))}
-            </div>
-            <div className="lg:col-span-8 h-[600px] lg:h-auto min-h-[500px] relative rounded-lg border border-outline-variant overflow-hidden">
-              <Image
-                src={mapImg}
-                alt="Map of Mumbai locations"
-                fill
-                className="object-cover grayscale brightness-90"
-              />
-              <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded shadow-lg border border-outline-variant hidden md:block">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-secondary"></div>
-                    <span className="text-xs font-bold font-inter">
-                      HQ - Dombivli
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-primary"></div>
-                    <span className="text-xs font-bold font-inter">
-                      Branch - Andheri
-                    </span>
-                  </div>
-                </div>
+                ))}
+              </div>
+
+              {/* Right: map */}
+              <div className="lg:col-span-8 relative rounded-lg border border-outline-variant overflow-hidden h-[320px] sm:h-[420px] lg:h-full min-h-[480px]">
+                <LocationsMap active={activeLocation} />
               </div>
             </div>
           </div>
@@ -212,10 +183,11 @@ export default function ContactPage() {
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
-                  className={`flex-1 py-4 px-6 font-label-caps text-xs whitespace-nowrap transition-colors ${activeTab === t
-                    ? "border-b-2 border-secondary bg-white text-primary"
-                    : "text-on-surface-variant hover:bg-white"
-                    }`}
+                  className={`flex-1 py-4 px-6 font-label-caps text-xs whitespace-nowrap transition-colors ${
+                    activeTab === t
+                      ? "border-b-2 border-secondary bg-white text-primary"
+                      : "text-on-surface-variant hover:bg-white"
+                  }`}
                 >
                   {t}
                 </button>
@@ -234,8 +206,8 @@ export default function ContactPage() {
                     <span className="font-semibold text-primary">
                       {tabEmail(activeTab)}
                     </span>
-                    . Our team at {form.branch} will reach out within 24
-                    business hours.
+                    . Our team at {form.branch} will reach out within 24 business
+                    hours.
                   </p>
                 </div>
               ) : (
@@ -250,9 +222,7 @@ export default function ContactPage() {
                     <input
                       required
                       value={form.fullName}
-                      onChange={(e) =>
-                        setForm({ ...form, fullName: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                       placeholder="John Doe"
                       type="text"
@@ -265,9 +235,7 @@ export default function ContactPage() {
                     <input
                       required
                       value={form.company}
-                      onChange={(e) =>
-                        setForm({ ...form, company: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, company: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                       placeholder="Enterprise Ltd."
                       type="text"
@@ -280,9 +248,7 @@ export default function ContactPage() {
                     <input
                       required
                       value={form.phone}
-                      onChange={(e) =>
-                        setForm({ ...form, phone: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                       placeholder="+91 00000 00000"
                       type="tel"
@@ -295,9 +261,7 @@ export default function ContactPage() {
                     <input
                       required
                       value={form.email}
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                       placeholder="john@enterprise.com"
                       type="email"
@@ -309,9 +273,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       value={form.interest}
-                      onChange={(e) =>
-                        setForm({ ...form, interest: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, interest: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                     >
                       <option>Tele-Solutions Infrastructure</option>
@@ -326,9 +288,7 @@ export default function ContactPage() {
                     </label>
                     <select
                       value={form.branch}
-                      onChange={(e) =>
-                        setForm({ ...form, branch: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, branch: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                     >
                       <option>Dombivli HQ</option>
@@ -341,9 +301,7 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       value={form.message}
-                      onChange={(e) =>
-                        setForm({ ...form, message: e.target.value })
-                      }
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
                       placeholder="Briefly describe your infrastructure needs..."
                       rows={4}
@@ -367,7 +325,10 @@ export default function ContactPage() {
       {/* Quick Contact */}
       <section className="py-section-padding px-8 bg-surface-container-low">
         <div className="max-w-[1280px] mx-auto">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-gutter" staggerDelay={0.1}>
+          <StaggerContainer
+            className="grid grid-cols-1 md:grid-cols-3 gap-gutter"
+            staggerDelay={0.1}
+          >
             {[
               {
                 title: "Sales Inquiries",
@@ -391,10 +352,7 @@ export default function ContactPage() {
                 border: "border-tertiary-fixed-dim",
               },
             ].map((c) => (
-              <div
-                key={c.title}
-                className={`p-8 border-l-4 ${c.border} bg-white shadow-sm`}
-              >
+              <div key={c.title} className={`p-8 border-l-4 ${c.border} bg-white shadow-sm`}>
                 <h4 className="font-h3 text-h3 mb-2">{c.title}</h4>
                 <p className="text-on-surface-variant text-sm mb-4">{c.desc}</p>
                 <p className="font-bold text-primary">{c.email}</p>

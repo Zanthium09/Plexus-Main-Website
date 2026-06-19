@@ -137,7 +137,7 @@ export default function CareersPage() {
                     <span className="material-symbols-outlined text-sm">
                       location_on
                     </span>{" "}
-                    NEW YORK, NY
+                    Andheri , IND
                   </span>
                   <span className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-sm">
