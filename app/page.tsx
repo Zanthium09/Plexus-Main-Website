@@ -3,6 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimateIn, { StaggerContainer } from "@/components/AnimateIn";
 import CountUpStats from "@/components/CountUpStats";
+import BrandsMarquee from "@/components/BrandsMarquee";
+import CertificationsCarousel from "@/components/CertificationsCarousel";
+
 import {
   ServiceCatalogJsonLd,
   LocalBusinessJsonLd,
@@ -341,28 +344,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── Brands Wall ─────────────────────────────────────────────── */}
-      <section className="py-20 border-y border-outline-variant bg-white">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimateIn direction="up">
-            <h2 className="font-label-caps text-center text-on-surface-variant mb-12">
-              STRATEGIC TECHNOLOGY PARTNERS
-            </h2>
-          </AnimateIn>
-          <StaggerContainer
-            className="grid grid-cols-2 md:grid-cols-6 gap-12 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500"
-            staggerDelay={0.07}
-          >
-            {["PANASONIC", "BOSE", "HIKVISION", "CISCO", "POLY", "NEC"].map((b) => (
-              <div key={b} className="flex justify-center font-black text-2xl">
-                {b}
-              </div>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
+<section className="py-20 border-y border-outline-variant bg-white overflow-hidden">
+  <div className="max-w-[1280px] mx-auto px-6 mb-12">
+    <AnimateIn direction="up">
+      <h2 className="font-label-caps text-center text-on-surface-variant">
+        STRATEGIC TECHNOLOGY PARTNERS
+      </h2>
+    </AnimateIn>
+  </div>
+  <BrandsMarquee />
+</section>
       {/* ── Industries ──────────────────────────────────────────────── */}
       <section className="section-padding bg-background">
         <div className="max-w-[1280px] mx-auto px-6">
@@ -439,32 +430,11 @@ export default function HomePage() {
           </StaggerContainer>
         </div>
       </section>
-
-      {/* ── Testimonial ─────────────────────────────────────────────── */}
-      <section className="section-padding bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full lifeline-pulse opacity-5 rotate-12" />
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimateIn direction="up" distance={24}>
-            <div className="max-w-4xl">
-              <span className="material-symbols-outlined text-6xl text-outline-variant mb-8 block">
-                format_quote
-              </span>
-              <p className="font-h2 text-h2 italic text-primary leading-tight mb-8">
-                &ldquo;Plexus Tele-Solutions has been our go-to partner for over a decade.
-                Their ability to deliver complex infrastructure projects on time and provide
-                relentless support is what makes them a true lifeline for our operations.&rdquo;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-surface-dim rounded-full" />
-                <div>
-                  <div className="font-bold text-lg">CTO, Leading BFSI Firm</div>
-                  <div className="text-sm text-on-surface-variant">Mumbai, India</div>
-                </div>
-              </div>
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
+ {/* ── Certifications ──────────────────────────────────────────── */}
+<section className="section-padding bg-white">
+    <CertificationsCarousel />
+  
+</section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
       <section className="bg-primary text-on-primary py-24 relative overflow-hidden">

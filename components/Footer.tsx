@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import AnimateIn, { StaggerContainer } from "./AnimateIn";
+import OfficesMap from "./OfficesMap";
 
 const SITE_URL = "https://www.plexustelesolutions.com";
 
@@ -43,15 +44,19 @@ export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-zinc-50 border-t border-zinc-800 pt-16 pb-8 relative overflow-hidden">
       <div className="absolute inset-0 lifeline-pulse opacity-5 pointer-events-none" />
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-5 gap-12 max-w-[1280px] mx-auto px-6 relative z-10" staggerDelay={0.08}>
+      
+      <StaggerContainer
+        className="grid grid-cols-1 md:grid-cols-5 gap-12 max-w-[1280px] mx-auto px-6 relative z-10"
+        staggerDelay={0.08}
+      >
+        {/* Brand */}
         <div className="md:col-span-2">
           <span className="text-xl font-bold text-white mb-4 block">
             Plexus Tele-Solutions
           </span>
           <p className="font-inter text-sm leading-relaxed text-zinc-400 max-w-sm">
             A premier sales and service organization specializing in telecom,
-            security, and AV infrastructure. Powering Indian enterprises since
-            1989.
+            security, and AV infrastructure. Powering Indian enterprises since 1989.
           </p>
           <div className="mt-8 flex gap-4">
             <a
@@ -61,6 +66,7 @@ export default function Footer() {
             >
               <span className="material-symbols-outlined text-sm">call</span>
             </a>
+            
             <a
               aria-label="Email us"
               href="mailto:sales@plexussol.net"
@@ -71,116 +77,42 @@ export default function Footer() {
             <ShareButton />
           </div>
         </div>
+
+        {/* Services */}
         <div>
           <h4 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">
             Services
           </h4>
           <ul className="space-y-4 font-inter text-sm">
-            <li>
-              <Link
-                href="/telecom-solutions"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Telecom Solutions
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Security Surveillance
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                AV Systems
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/services"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Networking
-              </Link>
-            </li>
+            <li><Link href="/telecom-solutions" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Telecom Solutions</Link></li>
+            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Security Surveillance</Link></li>
+            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">AV Systems</Link></li>
+            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Networking</Link></li>
           </ul>
         </div>
+
+        {/* Quick Links */}
         <div>
           <h4 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">
             Quick Links
           </h4>
           <ul className="space-y-4 font-inter text-sm">
-            <li>
-              <Link
-                href="/about"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/partners"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Partners
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/careers"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Contact
-              </Link>
-            </li>
+            <li><Link href="/about" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">About Us</Link></li>
+            <li><Link href="/partners" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Partners</Link></li>
+            <li><Link href="/careers" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Careers</Link></li>
+            <li><Link href="/contact" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Contact</Link></li>
           </ul>
         </div>
+
+        {/* Map */}
         <div>
           <h4 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">
-            Legal
+            Our Offices
           </h4>
-          <ul className="space-y-4 font-inter text-sm">
-            <li>
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Terms of Service
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block"
-              >
-                Cookie Policy
-              </a>
-            </li>
-          </ul>
+          <OfficesMap />
         </div>
       </StaggerContainer>
+
       <div className="max-w-[1280px] mx-auto px-6 mt-16 pt-8 border-t border-zinc-900 text-center md:text-left relative z-10">
         <p className="font-inter text-sm text-zinc-500">
           © 2026 Plexus Tele-Solutions. All rights reserved.

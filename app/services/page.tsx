@@ -1,3 +1,4 @@
+// C:\Users\Neeraj\Desktop\plexussssss\Plexus-Main-Website\app\services
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,7 +54,7 @@ const domains = [
       "Legacy System Integration",
       "Contact Center Optimization",
     ],
-    href: "/telecom-solutions",
+    href: "/services/telecom-solutions",
   },
   {
     icon: "videocam",
@@ -65,7 +66,7 @@ const domains = [
       "Video Wall Installations",
       "Presentation Systems",
     ],
-    href: "/products",
+    href: "/services/av-systems",
   },
   {
     icon: "precision_manufacturing",
@@ -77,7 +78,7 @@ const domains = [
       "Centralized Control Hubs",
       "IoT Ecosystem Deployment",
     ],
-    href: "/products",
+    href: "/contact",
   },
   {
     icon: "shield",
@@ -89,7 +90,7 @@ const domains = [
       "Perimeter Intrusion Detection",
       "Evidence Archiving Solutions",
     ],
-    href: "/products",
+    href: "/services/security-surveillance",
   },
   {
     icon: "lan",
@@ -101,7 +102,7 @@ const domains = [
       "Fiber Optic Backbones",
       "24/7 Network Operations",
     ],
-    href: "/products",
+    href: "/services/networking",
   },
   {
     icon: "lock_open",
@@ -113,7 +114,7 @@ const domains = [
       "Compliance Auditing",
       "Emergency Alert Systems",
     ],
-    href: "/products",
+    href: "/contact",
   },
 ];
 

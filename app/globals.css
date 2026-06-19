@@ -113,3 +113,8 @@ body {
 .hover-underline:hover::after {
   width: 100%;
 }
+
+@keyframes scroll-brands {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
