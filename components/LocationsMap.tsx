@@ -18,7 +18,7 @@ export const locations = [
     name: "Andheri Branch",
     tag: "Tech & Media Hub",
     address:
-      "A-102, New India Heights, Opp. Police Lane, Opp. Andheri Railway Station, Andheri (East), Mumbai",
+      "A-102, New India Heights, Opp. Police Lane, Opp. Andheri Railway Station, Andheri (East), Mumbai - 400069, Maharashtra",
     phone: "022-25109063",
     email: "sales@plexussol.net",
     embedSrc:

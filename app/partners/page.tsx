@@ -238,7 +238,7 @@ export default function PartnersPage() {
         <h3 className="font-h3 text-h3 mb-12 border-b border-outline-variant pb-6">
           Comprehensive Partner Directory
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
           {Object.entries(directory).map(([range, items]) => (
             <div key={range}>
               <h4 className="font-h1 text-[32px] text-secondary mb-6">{range}</h4>
@@ -281,10 +281,10 @@ export default function PartnersPage() {
                 Contact Engineering
               </Link>
               <Link
-                href="/resources"
+                href="/products"
                 className="border-2 border-white text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:text-secondary transition-colors text-center"
               >
-                Download Partner Guide
+                Browse Products
               </Link>
             </div>
           </div>

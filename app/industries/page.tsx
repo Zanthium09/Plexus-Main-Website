@@ -75,7 +75,7 @@ export default function IndustriesPage() {
 
       <section className="max-w-[1280px] mx-auto px-8 py-20">
         {/* BFSI */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center mb-20">
+        <div id="bfsi" className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center mb-20 scroll-mt-28">
           <AnimateIn direction="right">
             <div className="aspect-video bg-surface-container overflow-hidden rounded-lg shadow-sm border border-outline-variant relative">
               <Image src={bfsiImg} alt="Banking floor" fill className="object-cover" />
@@ -120,7 +120,7 @@ export default function IndustriesPage() {
         </div>
 
         {/* Manufacturing */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center mb-20">
+        <div id="manufacturing" className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center mb-20 scroll-mt-28">
           <AnimateIn direction="right" className="order-2 md:order-1">
             <div className="pr-0 md:pr-12">
               <span className="font-label-caps text-on-surface-variant">Sector 02</span>
@@ -165,9 +165,13 @@ export default function IndustriesPage() {
         </div>
 
         {/* Minor sector grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-gutter" staggerDelay={0.08}>
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter" staggerDelay={0.08}>
           {minorSectors.map(([icon, title, desc, stack]) => (
-            <div key={title} className="bg-white p-8 border border-outline-variant hover:border-primary transition-all">
+            <div
+              key={title}
+              id={title.toLowerCase().replace(/[^a-z]+/g, "-")}
+              className="bg-white p-8 border border-outline-variant hover:border-primary transition-all scroll-mt-28"
+            >
               <span className="material-symbols-outlined text-4xl text-secondary mb-4 block">{icon}</span>
               <h3 className="font-h3 text-h3 mb-3">{title}</h3>
               <p className="text-sm text-on-surface-variant mb-6">{desc}</p>
@@ -181,7 +185,7 @@ export default function IndustriesPage() {
 
         {/* Government / Retail */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-6" staggerDelay={0.12}>
-          <div className="bg-primary text-on-primary p-12 flex flex-col justify-between">
+          <div id="government" className="bg-primary text-on-primary p-12 flex flex-col justify-between scroll-mt-28">
             <div>
               <span className="font-label-caps text-secondary mb-4 block">Public Works</span>
               <h3 className="font-h2 text-h2 mb-4">Government</h3>
@@ -206,7 +210,7 @@ export default function IndustriesPage() {
               </Link>
             </div>
           </div>
-          <div className="bg-surface-container p-12 flex flex-col justify-between border border-outline-variant">
+          <div id="retail" className="bg-surface-container p-12 flex flex-col justify-between border border-outline-variant scroll-mt-28">
             <div>
               <span className="font-label-caps text-secondary mb-4 block">Commerce</span>
               <h3 className="font-h2 text-h2 mb-4">Retail</h3>
@@ -224,10 +228,10 @@ export default function IndustriesPage() {
                 </li>
               </ul>
               <Link
-                href="/resources"
+                href="/contact"
                 className="bg-primary text-on-primary px-6 py-2 text-xs uppercase font-bold hover:bg-secondary transition-all"
               >
-                Case Studies
+                Get a Quote
               </Link>
             </div>
           </div>
@@ -250,10 +254,10 @@ export default function IndustriesPage() {
               Request a Site Survey
             </Link>
             <Link
-              href="/resources"
+              href="/partners"
               className="border border-white/20 text-white px-10 py-4 font-label-caps hover:bg-white/10 transition-all"
             >
-              Download Industry Brochure
+              View Our Partners
             </Link>
           </div>
         </AnimateIn>

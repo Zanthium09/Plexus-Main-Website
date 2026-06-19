@@ -111,7 +111,7 @@ export default function HomePage() {
                 <span className="text-secondary underline decoration-4 underline-offset-8">
                   Lifeline
                 </span>{" "}
-                of Modern Business Communication.
+                of Modern Business Communication
               </h1>
             </AnimateIn>
 
@@ -180,7 +180,7 @@ export default function HomePage() {
               <div>
                 <span className="font-label-caps text-secondary">OUR IDENTITY</span>
                 <h2 className="font-h2 text-h2 text-primary mt-4 mb-6">
-                  A hardcore Sales and Service organization dedicated to your growth.
+                  A hardcore Sales and Service organization dedicated to your growth
                 </h2>
                 <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
                   We don&apos;t just sell equipment; we design the vital infrastructure
@@ -215,7 +215,7 @@ export default function HomePage() {
                   alt="Corporate professionals collaborating in a high-tech boardroom"
                   width={500}
                   height={500}
-                  className="rounded-lg shadow-lg translate-y-8 w-full h-auto"
+                  className="rounded-lg shadow-lg w-full h-auto"
                 />
                 <Image
                   src={aboutImg2}
@@ -242,11 +242,11 @@ export default function HomePage() {
             </div>
           </AnimateIn>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-gutter" staggerDelay={0.08}>
+          <StaggerContainer className="grid md:grid-cols-3 gap-gutter items-stretch" staggerDelay={0.08}>
             {services.map((s) => (
               <div
                 key={s.title}
-                className="bg-white p-8 border border-outline-variant group hover:border-primary transition-all shadow-sm"
+                className="bg-white p-8 border border-outline-variant group hover:border-primary transition-all shadow-sm h-full flex flex-col"
               >
                 <span className="material-symbols-outlined text-4xl text-primary group-hover:text-secondary transition-colors mb-6 block">
                   {s.icon}
@@ -273,72 +273,71 @@ export default function HomePage() {
             <div className="max-w-xl">
               <span className="font-label-caps text-secondary">WHY CHOOSE US</span>
               <h2 className="font-h2 text-h2 text-primary mt-4">
-                The Plexus Differentiator: Unmatched Reliability.
+                The Plexus Differentiator: Unmatched Reliability
               </h2>
             </div>
-            <Link href="/about" className="bg-primary text-on-primary px-8 py-4 font-label-caps h-fit">
+            <a
+              href="/company-profile.pdf"
+              download
+              className="bg-primary text-on-primary px-8 py-4 font-label-caps h-fit"
+            >
               DOWNLOAD PROFILE
-            </Link>
+            </a>
           </div>
 
-          {/* Outer flex: left 75% (2 rows) + right 25% (Rapid Support, full height) */}
-          <div className="flex gap-4 h-[560px]">
+          {/* Bento grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
-            {/* Left column: 2 rows stacked */}
-            <div className="flex flex-col gap-4 flex-[3]">
-
-              {/* Row 1: Turnkey (2/3) + Trained Manpower (1/3) */}
-              <div className="flex gap-4 flex-1">
-                <div className="flex-[2] bg-primary-container text-white p-10 flex flex-col justify-between border-b-4 border-on-tertiary-container">
-                  <span className="material-symbols-outlined text-4xl">inventory_2</span>
-                  <div>
-                    <h3 className="font-h3 text-h3 mb-2">Turnkey Solutions</h3>
-                    <p className="opacity-80">
-                      From design to deployment, we handle the entire lifecycle of your infrastructure.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex-[1] bg-surface-container-high p-8 border border-outline-variant flex flex-col justify-between">
-                  <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">groups</span>
-                  <div>
-                    <h3 className="font-h3 text-xl mb-2">Trained Manpower</h3>
-                    <p className="text-sm text-on-surface-variant">OEM certified engineers with decades of combined expertise.</p>
-                  </div>
-                </div>
+            {/* Turnkey Solutions — spans 2 cols on lg */}
+            <div className="md:col-span-1 lg:col-span-2 bg-primary-container text-white p-8 md:p-10 flex flex-col justify-between min-h-[220px]">
+              <span className="material-symbols-outlined text-4xl">inventory_2</span>
+              <div>
+                <h3 className="font-h3 text-h3 mb-2">Turnkey Solutions</h3>
+                <p className="opacity-80">
+                  From design to deployment, we handle the entire lifecycle of your infrastructure.
+                </p>
               </div>
-
-              {/* Row 2: 35+ Years (1/3) + Global Partnerships (2/3) */}
-              <div className="flex gap-4 flex-1">
-                <div className="flex-[1] bg-surface p-8 border border-outline-variant flex flex-col justify-center">
-                  <h3 className="font-h2 text-h2 text-primary">35+</h3>
-                  <p className="font-label-caps text-secondary">YEARS OF STABILITY</p>
-                </div>
-                <div className="flex-[2] bg-surface-container-highest p-10 flex gap-8 items-center border border-outline-variant">
-                  <div className="flex-1">
-                    <h3 className="font-h3 text-h3 mb-2">Global Partnerships</h3>
-                    <p>Authorized representatives for world-leading technology brands.</p>
-                  </div>
-                  <div className="hidden sm:flex gap-2">
-                    {["P", "B", "C"].map((l) => (
-                      <div key={l} className="w-12 h-12 bg-white rounded flex items-center justify-center shadow-sm font-bold">
-                        {l}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
             </div>
 
-            {/* Right column: Rapid Support, full height */}
-            <div className="flex-[1] bg-secondary text-white p-10 relative overflow-hidden flex flex-col justify-end">
+            {/* Trained Manpower */}
+            <div className="bg-surface-container-high p-8 border border-outline-variant flex flex-col justify-between min-h-[220px]">
+              <span className="material-symbols-outlined text-3xl text-secondary mb-4 block">groups</span>
+              <div>
+                <h3 className="font-h3 text-xl mb-2">Trained Manpower</h3>
+                <p className="text-sm text-on-surface-variant">OEM certified engineers with decades of combined expertise.</p>
+              </div>
+            </div>
+
+            {/* Rapid Support — spans 2 rows on lg */}
+            <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 bg-secondary text-white p-8 md:p-10 relative overflow-hidden flex flex-col justify-end min-h-[220px]">
               <div className="absolute top-0 right-0 p-8 opacity-20">
                 <span className="material-symbols-outlined text-9xl">speed</span>
               </div>
-              <h3 className="font-h2 text-4xl mb-4">Rapid Support</h3>
+              <h3 className="font-h2 text-3xl lg:text-4xl mb-4">Rapid Support</h3>
               <p className="opacity-90">
                 SLA-driven maintenance and on-site support across Pan-India locations.
               </p>
+            </div>
+
+            {/* 35+ Years */}
+            <div className="bg-surface p-8 border border-outline-variant flex flex-col justify-center min-h-[180px]">
+              <h3 className="font-h2 text-h2 text-primary">35+</h3>
+              <p className="font-label-caps text-secondary">YEARS OF STABILITY</p>
+            </div>
+
+            {/* Global Partnerships — spans 2 cols on md+ */}
+            <div className="md:col-span-1 lg:col-span-2 bg-surface-container-highest p-8 md:p-10 flex gap-8 items-center border border-outline-variant min-h-[180px]">
+              <div className="flex-1">
+                <h3 className="font-h3 text-h3 mb-2">Global Partnerships</h3>
+                <p>Authorized representatives for world-leading technology brands.</p>
+              </div>
+              <div className="hidden sm:flex gap-2">
+                {["P", "B", "C"].map((l) => (
+                  <div key={l} className="w-12 h-12 bg-white rounded flex items-center justify-center shadow-sm font-bold">
+                    {l}
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
@@ -360,14 +359,14 @@ export default function HomePage() {
           <AnimateIn direction="up">
             <div className="text-center mb-16">
               <span className="font-label-caps text-secondary">SECTORS WE SERVE</span>
-              <h2 className="font-h2 text-h2 text-primary mt-4">Built for Every Industry.</h2>
+              <h2 className="font-h2 text-h2 text-primary mt-4">Built for Every Industry</h2>
             </div>
           </AnimateIn>
 
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6" staggerDelay={0.07}>
             {industries.map((i) => (
               <Link
-                href="/industries"
+                href={`/industries#${i.name.toLowerCase().replace(/[^a-z]+/g, "-")}`}
                 key={i.name}
                 className="group p-8 border border-outline-variant hover:bg-primary transition-all block"
               >
@@ -410,7 +409,7 @@ export default function HomePage() {
                 img: caseImgs[2],
               },
             ].map((c) => (
-              <div key={c.title} className="group cursor-pointer">
+              <div key={c.title} className="group cursor-pointer block">
                 <div className="overflow-hidden mb-6">
                   <Image
                     src={c.img}
@@ -452,7 +451,7 @@ export default function HomePage() {
               CONSULT AN EXPERT
             </Link>
             <a
-              href="tel:+18007539870"
+              href="tel:+917045405405"
               className="border border-white text-white px-10 py-5 font-label-caps hover:bg-white hover:text-primary transition-all"
             >
               CALL US NOW

@@ -18,7 +18,6 @@ const navLinks = [
   { href: "/services",   label: "Services", hasDropdown: true },
   { href: "/products",   label: "Products" },
   { href: "/industries", label: "Industries" },
-  { href: "/resources",  label: "Resources" },
 ];
 
 export default function Header() {
@@ -89,7 +88,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
               link.hasDropdown ? (
                 <div key={link.href} className="relative" ref={dropdownRef}>
@@ -163,20 +162,20 @@ export default function Header() {
               <button
                 aria-label="Search products"
                 onClick={handleSearchClick}
-                className="material-symbols-outlined text-on-surface hidden md:inline-block hover:text-primary transition-colors cursor-pointer"
+                className="material-symbols-outlined text-on-surface hidden lg:inline-block hover:text-primary transition-colors cursor-pointer"
               >
                 search
               </button>
             )}
             <Link
               href="/contact"
-              className="hidden md:inline-block bg-primary text-on-primary px-5 py-2.5 font-label-caps uppercase scale-95 active:scale-100 transition-transform"
+              className="hidden lg:inline-block bg-primary text-on-primary px-5 py-2.5 font-label-caps uppercase scale-95 active:scale-100 transition-transform"
             >
               Get a Quote
             </Link>
             <button
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              className="material-symbols-outlined md:hidden text-on-surface text-2xl"
+              className="material-symbols-outlined lg:hidden text-on-surface text-2xl"
               onClick={() => setMobileOpen((o) => !o)}
             >
               {mobileOpen ? "close" : "menu"}
@@ -186,7 +185,7 @@ export default function Header() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-zinc-200 shadow-2xl z-50">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-zinc-200 shadow-2xl z-50">
             <nav className="flex flex-col max-w-[1280px] mx-auto px-6 py-2">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
@@ -260,7 +259,7 @@ export default function Header() {
 
       {mobileOpen && (
         <div
-          className="md:hidden fixed inset-0 top-24 bg-black/30 z-40"
+          className="lg:hidden fixed inset-0 top-24 bg-black/30 z-40"
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />

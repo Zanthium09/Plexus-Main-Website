@@ -28,11 +28,32 @@ export default function CareersPage() {
     email: "",
     interest: "Network Engineering",
   });
+  const [cvFile, setCvFile] = useState<File | null>(null);
+  const [errors, setErrors] = useState<{
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    cv?: string;
+  }>({});
   const [submitted, setSubmitted] = useState(false);
+
+  const nameOk = (v: string) => /^[A-Za-z][A-Za-z\s.'-]*$/.test(v.trim());
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.firstName || !form.lastName || !form.email) return;
+    const next: typeof errors = {};
+    if (!nameOk(form.firstName))
+      next.firstName = "Enter a valid first name (letters only).";
+    if (!nameOk(form.lastName))
+      next.lastName = "Enter a valid last name (letters only).";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      next.email = "Enter a valid email address.";
+    if (!cvFile) next.cv = "Please upload your CV (PDF).";
+    if (Object.keys(next).length > 0) {
+      setErrors(next);
+      return;
+    }
+    setErrors({});
     setSubmitted(true);
   };
 
@@ -122,9 +143,9 @@ export default function CareersPage() {
               <option>SALES</option>
             </select>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             {/* Featured */}
-            <div className="md:col-span-2 md:row-span-2 bg-primary-container p-12 flex flex-col justify-between text-white relative overflow-hidden">
+            <div className="sm:col-span-2 sm:row-span-2 bg-primary-container p-8 sm:p-12 flex flex-col justify-between text-white relative overflow-hidden">
               <div className="relative z-10">
                 <span className="inline-block px-3 py-1 bg-secondary text-[10px] font-bold tracking-widest mb-6 uppercase">
                   HOT ROLE
@@ -248,7 +269,7 @@ export default function CareersPage() {
                   <div className="grid grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="font-label-caps text-[10px] text-on-surface-variant">
-                        FIRST NAME
+                        FIRST NAME <span className="text-secondary">*</span>
                       </label>
                       <input
                         required
@@ -260,10 +281,15 @@ export default function CareersPage() {
                         placeholder="John"
                         type="text"
                       />
+                      {errors.firstName && (
+                        <span className="text-xs text-secondary">
+                          {errors.firstName}
+                        </span>
+                      )}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="font-label-caps text-[10px] text-on-surface-variant">
-                        LAST NAME
+                        LAST NAME <span className="text-secondary">*</span>
                       </label>
                       <input
                         required
@@ -275,11 +301,16 @@ export default function CareersPage() {
                         placeholder="Doe"
                         type="text"
                       />
+                      {errors.lastName && (
+                        <span className="text-xs text-secondary">
+                          {errors.lastName}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      EMAIL ADDRESS
+                      EMAIL ADDRESS <span className="text-secondary">*</span>
                     </label>
                     <input
                       required
@@ -291,6 +322,9 @@ export default function CareersPage() {
                       placeholder="j.doe@example.com"
                       type="email"
                     />
+                    {errors.email && (
+                      <span className="text-xs text-secondary">{errors.email}</span>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
@@ -311,25 +345,31 @@ export default function CareersPage() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      UPLOAD CV (PDF)
+                      UPLOAD CV (PDF) <span className="text-secondary">*</span>
                     </label>
                     <label
                       htmlFor="cv-upload"
-                      className="border-2 border-dashed border-outline-variant p-8 text-center bg-surface-bright hover:bg-white transition-colors cursor-pointer block"
+                      className={`border-2 border-dashed p-8 text-center bg-surface-bright hover:bg-white transition-colors cursor-pointer block ${
+                        errors.cv ? "border-secondary" : "border-outline-variant"
+                      }`}
                     >
                       <span className="material-symbols-outlined text-outline mb-2 block">
                         upload_file
                       </span>
                       <p className="text-xs text-on-surface-variant">
-                        Drag and drop or click to upload
+                        {cvFile ? cvFile.name : "Drag and drop or click to upload"}
                       </p>
                       <input
                         id="cv-upload"
                         type="file"
                         accept="application/pdf"
                         className="sr-only"
+                        onChange={(e) => setCvFile(e.target.files?.[0] ?? null)}
                       />
                     </label>
+                    {errors.cv && (
+                      <span className="text-xs text-secondary">{errors.cv}</span>
+                    )}
                   </div>
                   <button
                     type="submit"

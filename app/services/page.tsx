@@ -152,24 +152,24 @@ export default function ServicesPage() {
               </p>
             </AnimateIn>
             <AnimateIn direction="up" delay={0.24}>
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="#domains"
-                  className="bg-primary text-on-primary px-8 py-4 font-label-caps text-sm hover:border-b-2 hover:border-secondary transition-all"
+                  className="bg-primary text-on-primary px-8 py-4 font-label-caps text-sm hover:border-b-2 hover:border-secondary transition-all text-center"
                 >
                   EXPLORE DOMAINS
                 </a>
                 <Link
-                  href="/resources"
-                  className="border border-primary text-primary px-8 py-4 font-label-caps text-sm hover:bg-primary hover:text-white transition-all"
+                  href="/contact"
+                  className="border border-primary text-primary px-8 py-4 font-label-caps text-sm hover:bg-primary hover:text-white transition-all text-center"
                 >
-                  VIEW CASE STUDIES
+                  CONTACT US
                 </Link>
               </div>
             </AnimateIn>
           </div>
           <AnimateIn direction="left" delay={0.15}>
-            <div className="relative h-[500px] bg-surface-container rounded-lg overflow-hidden group">
+            <div className="relative h-[300px] md:h-[500px] bg-surface-container rounded-lg overflow-hidden group">
               <Image
                 src={heroImg}
                 alt="High-tech server room with fiber optic cables"
@@ -234,7 +234,7 @@ export default function ServicesPage() {
               </p>
             </div>
           </AnimateIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-gutter relative" staggerDelay={0.1}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter relative" staggerDelay={0.1}>
             {phases.map(([num, title, desc], i) => (
               <div key={num} className="relative">
                 <div className="font-h1 text-h1 font-black text-on-primary-container opacity-20 mb-4">{num}</div>
