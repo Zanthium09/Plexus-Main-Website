@@ -79,11 +79,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/logo.png"
+              src="/navlogo.png"
               alt="Plexus Tele-Solutions"
-              width={220}
+              width={210}
               height={88}
-              className="h-[72px] w-auto object-contain"
+              className="h-[60px] w-auto object-contain"
               priority
             />
           </Link>
