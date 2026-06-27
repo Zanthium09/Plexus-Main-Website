@@ -356,11 +356,11 @@ body {
   .hero-img-fade-left {
     width: 100%;
     background: linear-gradient(
-      to bottom,
-      rgba(249, 249, 249, 0.15) 0%,
-      rgba(249, 249, 249, 0.5) 40%,
-      rgba(249, 249, 249, 0.92) 65%,
-      #f9f9f9 80%
+      to right,
+      rgba(249, 249, 249, 0.95) 0%,
+      rgba(249, 249, 249, 0.85) 35%,
+      rgba(249, 249, 249, 0.55) 65%,
+      rgba(249, 249, 249, 0.15) 100%
     );
   }
 
@@ -370,8 +370,7 @@ body {
 
   .hero-left {
     width: 100%;
-    padding: 0 1.25rem 2rem;
-    padding-top: clamp(52vw, 48vw, 55vw);
+    padding: 1.5rem 1.25rem 2rem;
     justify-content: flex-start;
   }
 
