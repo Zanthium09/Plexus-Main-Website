@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
 const brands = [
@@ -44,8 +45,10 @@ export default function BrandsMarquee() {
       >
         {[...Array(2)].flatMap((_, i) =>
           brands.map((b) => (
-            <div
+            <Link
+              href="/partners"
               key={`${b.name}-${i}`}
+              aria-label={`${b.name} — view our technology partners`}
               className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer group"
               style={{ width: "clamp(100px, 12vw, 160px)", padding: "0.75rem" }}
               onMouseEnter={pause}
@@ -56,10 +59,10 @@ export default function BrandsMarquee() {
                 alt={b.name}
                 width={150}
                 height={70}
-                className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300 w-full h-auto"
+                className="object-contain transition-transform duration-300 hover:scale-105 w-full h-auto"
                 style={{ maxHeight: "clamp(40px, 5vw, 70px)" }}
               />
-            </div>
+            </Link>
           ))
         )}
       </div>

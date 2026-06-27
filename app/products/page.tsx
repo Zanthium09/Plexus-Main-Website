@@ -1000,34 +1000,36 @@ export default function ProductsPage() {
         <div className="max-w-[1280px] mx-auto px-8">
 
           {/* Search bar */}
-          <div className="mb-8 relative">
-            <input
-              id="product-search"
-              type="text"
-              placeholder="Search products by name, category or description..."
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setPage(1);
-              }}
-              className="w-full border border-outline-variant bg-white px-5 py-3.5 pr-12 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-zinc-400"
-            />
-            {searchQuery ? (
-              <button
-                onClick={() => { setSearchQuery(""); setPage(1); }}
-                aria-label="Clear search"
-                className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
-              >
-                close
-              </button>
-            ) : (
-              <span
-                className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant pointer-events-none"
-                aria-hidden="true"
-              >
-                search
-              </span>
-            )}
+          <div className="mb-8">
+            <div className="relative">
+              <input
+                id="product-search"
+                type="text"
+                placeholder="Search products by name, category or description..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setPage(1);
+                }}
+                className="w-full border border-outline-variant bg-white px-5 py-3.5 pr-12 text-sm focus:outline-none focus:border-primary transition-colors placeholder:text-zinc-400"
+              />
+              {searchQuery ? (
+                <button
+                  onClick={() => { setSearchQuery(""); setPage(1); }}
+                  aria-label="Clear search"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center leading-none material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  close
+                </button>
+              ) : (
+                <span
+                  className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center leading-none material-symbols-outlined text-on-surface-variant pointer-events-none"
+                  aria-hidden="true"
+                >
+                  search
+                </span>
+              )}
+            </div>
             {searchQuery && (
               <p className="mt-2 text-xs text-on-surface-variant">
                 {filtered.length} result{filtered.length !== 1 ? "s" : ""} found across all brands for &quot;{searchQuery}&quot;

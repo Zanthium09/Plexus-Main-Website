@@ -89,7 +89,7 @@ export default function NetworkingPage() {
             </AnimateIn>
           </div>
           <AnimateIn direction="left" delay={0.15}>
-            <div className="relative h-[460px] bg-surface-container rounded-lg overflow-hidden group">
+            <div className="relative h-[300px] md:h-[460px] bg-surface-container rounded-lg overflow-hidden group">
               <Image
                 src={heroImg}
                 alt="Enterprise server room and network infrastructure"

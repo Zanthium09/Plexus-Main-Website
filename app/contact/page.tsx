@@ -14,6 +14,29 @@ const tabs = ["General", "Request Quote", "Partner/Dealer", "Support"];
 const tabEmail = (tab: string) =>
   tab === "Support" ? "support@plexussol.net" : "sales@plexussol.net";
 
+const tabMeta: Record<string, { heading: string; blurb: string; cta: string }> = {
+  General: {
+    heading: "General Enquiry",
+    blurb: "Tell us how we can help — we'll route your message to the right team.",
+    cta: "Submit Inquiry",
+  },
+  "Request Quote": {
+    heading: "Request a Quote",
+    blurb: "Share your project scope and we'll prepare a tailored commercial proposal.",
+    cta: "Request Quote",
+  },
+  "Partner/Dealer": {
+    heading: "Partner / Dealer Enquiry",
+    blurb: "Interested in becoming a channel partner or dealer? Let's explore it together.",
+    cta: "Submit Partnership Request",
+  },
+  Support: {
+    heading: "Technical Support",
+    blurb: "Already a customer? Raise a request and our 24/7 team will respond.",
+    cta: "Raise Support Ticket",
+  },
+};
+
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState("General");
   const [activeLocation, setActiveLocation] = useState("dombivli");
@@ -27,9 +50,25 @@ export default function ContactPage() {
     branch: "Dombivli HQ",
     message: "",
   });
+  const [errors, setErrors] = useState<{ phone?: string; email?: string }>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate phone (digits, spaces, +, -, () only) and email format
+    const nextErrors: { phone?: string; email?: string } = {};
+    if (!/^[+]?[\d\s()-]{7,15}$/.test(form.phone.trim())) {
+      nextErrors.phone = "Please enter a valid phone number (digits only).";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      nextErrors.email = "Please enter a valid email address.";
+    }
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      return;
+    }
+    setErrors({});
+
     const recipient = tabEmail(activeTab);
     const subject = encodeURIComponent(
       `[${activeTab}] Inquiry from ${form.fullName} – ${form.company}`
@@ -178,12 +217,12 @@ export default function ContactPage() {
             </div>
           </AnimateIn>
           <div className="max-w-3xl mx-auto border border-outline-variant rounded shadow-lg overflow-hidden">
-            <div className="flex bg-surface-container-low border-b border-outline-variant overflow-x-auto">
+            <div className="flex flex-wrap sm:flex-nowrap bg-surface-container-low border-b border-outline-variant">
               {tabs.map((t) => (
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
-                  className={`flex-1 py-4 px-6 font-label-caps text-xs whitespace-nowrap transition-colors ${
+                  className={`flex-1 py-4 px-4 sm:px-6 font-label-caps text-xs whitespace-nowrap transition-colors ${
                     activeTab === t
                       ? "border-b-2 border-secondary bg-white text-primary"
                       : "text-on-surface-variant hover:bg-white"
@@ -193,7 +232,7 @@ export default function ContactPage() {
                 </button>
               ))}
             </div>
-            <div className="p-10">
+            <div className="p-6 sm:p-10">
               {submitted ? (
                 <div className="text-center py-12">
                   <span className="material-symbols-outlined text-6xl text-on-tertiary-container mb-4 block">
@@ -211,13 +250,22 @@ export default function ContactPage() {
                   </p>
                 </div>
               ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                >
+                <>
+                  <div className="mb-6">
+                    <h3 className="font-h3 text-xl text-primary mb-1">
+                      {tabMeta[activeTab].heading}
+                    </h3>
+                    <p className="text-sm text-on-surface-variant">
+                      {tabMeta[activeTab].blurb}
+                    </p>
+                  </div>
+                  <form
+                    onSubmit={handleSubmit}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  >
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      Full Name
+                      Full Name <span className="text-secondary">*</span>
                     </label>
                     <input
                       required
@@ -230,7 +278,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      Company Name
+                      Company Name <span className="text-secondary">*</span>
                     </label>
                     <input
                       required
@@ -243,29 +291,39 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      Phone Number
+                      Phone Number <span className="text-secondary">*</span>
                     </label>
                     <input
                       required
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
+                      className={`border focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md ${
+                        errors.phone ? "border-secondary" : "border-outline-variant focus:border-primary"
+                      }`}
                       placeholder="+91 00000 00000"
                       type="tel"
                     />
+                    {errors.phone && (
+                      <span className="text-xs text-secondary">{errors.phone}</span>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
-                      Email Address
+                      Email Address <span className="text-secondary">*</span>
                     </label>
                     <input
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="border border-outline-variant focus:border-primary focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md"
+                      className={`border focus:ring-0 outline-none rounded-none p-3 text-sm font-body-md ${
+                        errors.email ? "border-secondary" : "border-outline-variant focus:border-primary"
+                      }`}
                       placeholder="john@enterprise.com"
                       type="email"
                     />
+                    {errors.email && (
+                      <span className="text-xs text-secondary">{errors.email}</span>
+                    )}
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="font-label-caps text-[10px] text-on-surface-variant">
@@ -312,10 +370,11 @@ export default function ContactPage() {
                       className="w-full bg-primary text-on-primary py-4 font-label-caps tracking-widest hover:shadow-xl hover:translate-y-[-2px] transition-all"
                       type="submit"
                     >
-                      Submit Inquiry
+                      {tabMeta[activeTab].cta}
                     </button>
                   </div>
-                </form>
+                  </form>
+                </>
               )}
             </div>
           </div>
@@ -342,14 +401,14 @@ export default function ContactPage() {
                 desc: "24/7 Managed services and ticketing.",
                 email: "support@plexussol.net",
                 phone: "022-25109063",
-                border: "border-primary",
+                border: "border-secondary",
               },
               {
                 title: "Careers",
                 desc: "Join our engineering elite team.",
                 email: "deepak@plexussol.net",
                 phone: "+91 7045405405",
-                border: "border-tertiary-fixed-dim",
+                border: "border-secondary",
               },
             ].map((c) => (
               <div key={c.title} className={`p-8 border-l-4 ${c.border} bg-white shadow-sm`}>

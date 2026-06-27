@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="md:col-span-2">
           <span className="text-xl font-bold text-white mb-4 block">
-            Plexus Tele-Solutions
+            Plexus Tele-Solutions Pvt. Ltd.
           </span>
           <p className="font-inter text-sm leading-relaxed text-zinc-400 max-w-sm">
             A premier sales and service organization specializing in telecom,
@@ -84,10 +84,10 @@ export default function Footer() {
             Services
           </h4>
           <ul className="space-y-4 font-inter text-sm">
-            <li><Link href="/telecom-solutions" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Telecom Solutions</Link></li>
-            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Security Surveillance</Link></li>
-            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">AV Systems</Link></li>
-            <li><Link href="/services" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Networking</Link></li>
+            <li><Link href="/services/telecom-solutions" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Telecom Solutions</Link></li>
+            <li><Link href="/services/security-surveillance" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Security Surveillance</Link></li>
+            <li><Link href="/services/av-systems" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">AV Systems</Link></li>
+            <li><Link href="/services/networking" className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block">Networking</Link></li>
           </ul>
         </div>
 

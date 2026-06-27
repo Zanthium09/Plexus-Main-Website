@@ -97,7 +97,7 @@ export default function AboutPage() {
                   ESTABLISHED 1989
                 </span>
                 <h1 className="font-h1 text-h1 text-on-background mb-8">
-                  For 35 years, we&apos;ve been India&apos;s quiet lifeline.
+                  For 35 years, we&apos;ve been India&apos;s quiet lifeline
                 </h1>
                 <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
                   Our journey began in 1989 as a pioneering fax-machine startup,
@@ -204,7 +204,7 @@ export default function AboutPage() {
             </div>
           </AnimateIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20" staggerDelay={0.1}>
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20" staggerDelay={0.1}>
             {approach.map(([icon, title, desc]) => (
               <div key={title} className="flex flex-col items-center text-center group">
                 <div className="w-20 h-20 rounded-full border border-zinc-700 flex items-center justify-center mb-6 group-hover:border-secondary transition-colors">
@@ -233,7 +233,7 @@ export default function AboutPage() {
           <AnimateIn direction="up">
             <h2 className="font-h2 text-h2 text-center mb-16">The Core Pillars of Our Authority</h2>
           </AnimateIn>
-          <StaggerContainer className="grid md:grid-cols-3 gap-gutter" staggerDelay={0.09}>
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-gutter" staggerDelay={0.09}>
             {pillars.map(([icon, title, desc]) => (
               <div
                 key={title}

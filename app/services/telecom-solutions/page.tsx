@@ -101,16 +101,16 @@ export default function TelecomPage() {
               We design the lifelines that keep global enterprises connected in
               an era of rapid digital convergence.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/products"
-                className="bg-primary text-on-primary font-label-caps py-4 px-8 border-b-2 border-transparent hover:border-on-tertiary-container transition-all"
+                className="bg-primary text-on-primary font-label-caps py-4 px-8 border-b-2 border-transparent hover:border-on-tertiary-container transition-all text-center"
               >
                 Explore Engineering
               </Link>
               <Link
-                href="/resources"
-                className="border border-primary text-primary font-label-caps py-4 px-8 hover:bg-surface-container transition-all"
+                href="/contact"
+                className="border border-primary text-primary font-label-caps py-4 px-8 hover:bg-surface-container transition-all text-center"
               >
                 Technical Specs
               </Link>
@@ -158,7 +158,7 @@ export default function TelecomPage() {
             <h2 className="font-h2 text-h2 text-primary mb-4">Our Offerings</h2>
             <div className="h-1 w-20 bg-secondary"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
             {offerings.map(([icon, title, desc, cta]) => (
               <div
                 key={title}
@@ -172,7 +172,7 @@ export default function TelecomPage() {
                   {desc}
                 </p>
                 <a
-                  href="#"
+                  href="/contact"
                   className="font-label-caps text-secondary inline-flex items-center gap-2"
                 >
                   {cta}{" "}
@@ -188,7 +188,7 @@ export default function TelecomPage() {
 
       {/* Why Plexus */}
       <section className="py-section-padding bg-surface">
-        <div className="max-w-[1280px] mx-auto px-8 grid md:grid-cols-3 gap-gutter items-center">
+        <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-gutter items-center">
           <div className="md:col-span-1">
             <h2 className="font-h2 text-h2 text-primary mb-6">
               Why Plexus for Telecom
@@ -197,12 +197,13 @@ export default function TelecomPage() {
               We don&apos;t just sell hardware; we engineer communication
               lifelines that scale with your corporate ambition.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href="/brochures/plexus-telecom-solutions.pdf"
+              download
               className="inline-block bg-primary text-on-primary font-label-caps py-4 px-8 border-b-2 border-on-tertiary-container"
             >
               Download Brochure
-            </Link>
+            </a>
           </div>
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {why.map(([icon, title, desc]) => (
@@ -246,7 +247,7 @@ export default function TelecomPage() {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             {products.map((p) => (
               <div key={p.name} className="group">
                 <div className="aspect-square bg-surface-container mb-6 overflow-hidden border border-outline-variant group-hover:border-primary transition-all relative">
