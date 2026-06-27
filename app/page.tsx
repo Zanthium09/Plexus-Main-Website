@@ -7,6 +7,7 @@ import AnimateIn, { StaggerContainer } from "@/components/AnimateIn";
 import CountUpStats from "@/components/CountUpStats";
 import BrandsMarquee from "@/components/BrandsMarquee";
 import CertificationsCarousel from "@/components/CertificationsCarousel";
+import HeroSection from "@/components/HeroSection";
 
 import {
   ServiceCatalogJsonLd,
@@ -93,78 +94,7 @@ export default function HomePage() {
         }))}
       />
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative pt-12 pb-20 md:pt-28 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-40 -z-10" />
-        <div className="container-max max-w-[1280px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          {/* Text column */}
-          <div className="space-y-8">
-            <AnimateIn direction="up" delay={0}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container font-label-caps rounded-full text-xs">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                Powering Enterprises Since 1989
-              </div>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.08}>
-              <h1 className="font-h1 text-h1 text-primary">
-                The{" "}
-                <span className="text-secondary underline decoration-4 underline-offset-8">
-                  Lifeline
-                </span>{" "}
-                of Modern Business Communication
-              </h1>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.16}>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                For 35+ years, Plexus Tele-Solutions has powered 5000+ enterprises
-                with mission-critical security, automation, and AV infrastructure.
-              </p>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.24}>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/services"
-                  className="bg-primary text-on-primary px-8 py-4 font-label-caps border-b-2 border-transparent hover:border-on-tertiary-container transition-all inline-block"
-                >
-                  EXPLORE OUR SERVICES
-                </Link>
-                <Link
-                  href="/contact"
-                  className="border border-primary text-primary px-8 py-4 font-label-caps hover:bg-surface-container transition-colors inline-block"
-                >
-                  TALK TO AN EXPERT →
-                </Link>
-              </div>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.32}>
-              <div className="pt-8 border-t border-outline-variant flex flex-wrap gap-x-8 gap-y-4 text-on-surface-variant font-label-caps">
-                <div>SINCE 1989</div>
-                <div>5000+ CLIENTS</div>
-                <div>PAN-INDIA SERVICE</div>
-                <div>500+ DEALERS</div>
-              </div>
-            </AnimateIn>
-          </div>
-
-          {/* Image column */}
-          <AnimateIn direction="left" delay={0.2} duration={0.7}>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-secondary/5 rounded-full blur-3xl" />
-              <Image
-                src={heroImg}
-                alt="Modern enterprise server hardware and networking equipment"
-                width={800}
-                height={600}
-                className="w-full aspect-[4/3] object-cover rounded shadow-2xl relative z-10"
-                priority
-              />
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ── Count-Up Stats Bar ───────────────────────────────────────── */}
       <section className="bg-primary text-on-primary py-12 relative overflow-hidden">
