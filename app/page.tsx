@@ -71,8 +71,6 @@ const industries = [
   { icon: "gavel", name: "Government", desc: "Public Sector Projects" },
 ];
 
-const heroImg =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDi3QnuvdY25j_G1Y7mXi2S_R_8zOAjjrefAuf5giRXbJF4EE4R4fsNYGBLAZAQm4iKInvHY000113Hn0CIHwUVmyyl_FXC8FQCA5RTM_TN_zGiNxc1mkGv76AWrbFCeOYeuazVajMYmUQfYu6TmNtU36WugyTsomUJ4817t2YXvQ61eFRkUmnTGLskU2SclFd78tUlIPJsB0HREamTZZ-xJ55vVwGeIFC8PU8y9ERdD7JuzkFEhCZHYMJ145Jp8sGYRBWO0R-xPgYF";
 const aboutImg1 =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBlm7CkNYx6ffEEV29s9lAj1G_8RBpgBYTPalG7eCNLJQd5n4sYj1Sz9bco_uEY6uqdYYRu0GgovFtXMfUTYzEacOvBpsx59rPFqnTOJr28ImCNGrYGLTgwjqd_SlUBlu6_8u5DDv3ASD9YcmdQIQBJ3rqk2IhnoUMTB_PeqRm1QddlPwpLKc6NON-35V8aY8R8QAwvPquhRHJ37djeujhFIiaGNPiCrS5xbZTZ3hvbPso9WgdMDaPGKUg2uZOyTKpI9smIDY1W4S3n";
 const aboutImg2 =
