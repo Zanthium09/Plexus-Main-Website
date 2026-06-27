@@ -1,5 +1,4 @@
-//C:\Users\Neeraj\Desktop\plexussssss\Plexus-Main-Website\app\page.tsx
-
+import HeroSection from "@/components/HeroSection";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -71,8 +70,6 @@ const industries = [
   { icon: "gavel", name: "Government", desc: "Public Sector Projects" },
 ];
 
-const heroImg =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDi3QnuvdY25j_G1Y7mXi2S_R_8zOAjjrefAuf5giRXbJF4EE4R4fsNYGBLAZAQm4iKInvHY000113Hn0CIHwUVmyyl_FXC8FQCA5RTM_TN_zGiNxc1mkGv76AWrbFCeOYeuazVajMYmUQfYu6TmNtU36WugyTsomUJ4817t2YXvQ61eFRkUmnTGLskU2SclFd78tUlIPJsB0HREamTZZ-xJ55vVwGeIFC8PU8y9ERdD7JuzkFEhCZHYMJ145Jp8sGYRBWO0R-xPgYF";
 const aboutImg1 =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBlm7CkNYx6ffEEV29s9lAj1G_8RBpgBYTPalG7eCNLJQd5n4sYj1Sz9bco_uEY6uqdYYRu0GgovFtXMfUTYzEacOvBpsx59rPFqnTOJr28ImCNGrYGLTgwjqd_SlUBlu6_8u5DDv3ASD9YcmdQIQBJ3rqk2IhnoUMTB_PeqRm1QddlPwpLKc6NON-35V8aY8R8QAwvPquhRHJ37djeujhFIiaGNPiCrS5xbZTZ3hvbPso9WgdMDaPGKUg2uZOyTKpI9smIDY1W4S3n";
 const aboutImg2 =
@@ -95,78 +92,7 @@ export default function HomePage() {
         }))}
       />
       {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative pt-12 pb-20 md:pt-28 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-40 -z-10" />
-        <div className="container-max max-w-[1280px] mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          {/* Text column */}
-          <div className="space-y-8">
-            <AnimateIn direction="up" delay={0}>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container font-label-caps rounded-full text-xs">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                Powering Enterprises Since 1989
-              </div>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.08}>
-              <h1 className="font-h1 text-h1 text-primary">
-                The{" "}
-                <span className="text-secondary underline decoration-4 underline-offset-8">
-                  Lifeline
-                </span>{" "}
-                of Modern Business Communication.
-              </h1>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.16}>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                For 35+ years, Plexus Tele-Solutions has powered 5000+ enterprises
-                with mission-critical security, automation, and AV infrastructure.
-              </p>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.24}>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/services"
-                  className="bg-primary text-on-primary px-8 py-4 font-label-caps border-b-2 border-transparent hover:border-on-tertiary-container transition-all inline-block"
-                >
-                  EXPLORE OUR SERVICES
-                </Link>
-                <Link
-                  href="/contact"
-                  className="border border-primary text-primary px-8 py-4 font-label-caps hover:bg-surface-container transition-colors inline-block"
-                >
-                  TALK TO AN EXPERT →
-                </Link>
-              </div>
-            </AnimateIn>
-
-            <AnimateIn direction="up" delay={0.32}>
-              <div className="pt-8 border-t border-outline-variant flex flex-wrap gap-x-8 gap-y-4 text-on-surface-variant font-label-caps">
-                <div>SINCE 1989</div>
-                <div>5000+ CLIENTS</div>
-                <div>PAN-INDIA SERVICE</div>
-                <div>500+ DEALERS</div>
-              </div>
-            </AnimateIn>
-          </div>
-
-          {/* Image column */}
-          <AnimateIn direction="left" delay={0.2} duration={0.7}>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-secondary/5 rounded-full blur-3xl" />
-              <Image
-                src={heroImg}
-                alt="Modern enterprise server hardware and networking equipment"
-                width={800}
-                height={600}
-                className="w-full aspect-[4/3] object-cover rounded shadow-2xl relative z-10"
-                priority
-              />
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ── Count-Up Stats Bar ───────────────────────────────────────── */}
       <section className="bg-primary text-on-primary py-12 relative overflow-hidden">
