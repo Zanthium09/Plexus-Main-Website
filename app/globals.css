@@ -122,7 +122,6 @@ body {
 /* ── Hero Section ─────────────────────────────────────────── */
 .hero-root {
   position: relative;
-  min-height: 100svh;
   overflow: hidden;
 }
 
@@ -162,9 +161,8 @@ body {
   z-index: 10;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 100svh;
-  padding: 6rem 1.5rem 3rem;
+  justify-content: flex-start;
+  padding: 1.5rem 1.5rem 2rem;
 }
 
 .hero-mesh-canvas {
@@ -268,7 +266,11 @@ body {
 }
 
 .hero-stats {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .hero-stat {
@@ -293,6 +295,7 @@ body {
     width: 55%;
     min-height: 80vh;
     padding: 5rem 2rem 4rem 3rem;
+    justify-content: center;
   }
   .hero-mesh-canvas {
     display: block;
@@ -329,8 +332,6 @@ body {
     border-radius: 0;
   }
   .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
     gap: 1rem 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #d0d0d0;
