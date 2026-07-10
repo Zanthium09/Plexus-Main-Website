@@ -54,6 +54,17 @@ export default function CareersPage() {
       return;
     }
     setErrors({});
+    const subject = encodeURIComponent(
+      `[Careers Application] ${form.firstName} ${form.lastName} – ${form.interest}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${form.firstName} ${form.lastName}\nEmail: ${form.email}\nArea of Interest: ${form.interest}\n\n` +
+        `IMPORTANT: Please attach your CV (${cvFile?.name ?? "PDF"}) to this email before sending.`
+    );
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=sales@plexussol.net&su=${subject}&body=${body}`,
+      "_blank"
+    );
     setSubmitted(true);
   };
 
@@ -258,10 +269,11 @@ export default function CareersPage() {
                   <span className="material-symbols-outlined text-6xl text-on-tertiary-container mb-4 block">
                     check_circle
                   </span>
-                  <h3 className="font-h3 text-h3 mb-4">Application Received</h3>
+                  <h3 className="font-h3 text-h3 mb-4">Almost Done</h3>
                   <p className="text-on-surface-variant">
-                    Thanks {form.firstName}! Our team will review your details
-                    and contact you within 48 hours.
+                    Thanks {form.firstName}! A Gmail window has opened with your
+                    application — please attach your CV and hit send. Our team
+                    will review it and contact you within 48 hours.
                   </p>
                 </div>
               ) : (

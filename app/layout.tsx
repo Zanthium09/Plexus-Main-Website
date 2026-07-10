@@ -217,14 +217,6 @@ const websiteSchema = {
     "Telecom, security, AV and automation infrastructure for Indian enterprises.",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-IN",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 export default function RootLayout({

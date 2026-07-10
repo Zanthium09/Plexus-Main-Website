@@ -4,7 +4,12 @@
       "WebFetch(domain:www.legrand.co.in)",
       "WebFetch(domain:www.matrixcomsec.com)",
       "WebFetch(domain:www.dahuasecurity.com)",
-      "WebFetch(domain:cdn.legrand.co.in)"
+      "WebFetch(domain:cdn.legrand.co.in)",
+      "Bash(npm audit *)",
+      "Bash(git check-ignore *)",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npx next build 2>&1 | Select-Object -Last 80)",
+      "WebFetch(domain:www.plexustelesolutions.com)"
     ]
   }
 }

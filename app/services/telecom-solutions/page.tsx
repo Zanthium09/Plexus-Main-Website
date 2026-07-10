@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     "enterprise telephony",
     "Avaya IP Office",
   ],
-  alternates: { canonical: "/telecom-solutions" },
+  alternates: { canonical: "/services/telecom-solutions" },
   openGraph: {
     title: "Telecom Solutions | Plexus Tele-Solutions",
     description:
       "IP PBX, SIP trunking, UC, contact centers and EPABX — built for enterprise reliability.",
-    url: "/telecom-solutions",
+    url: "/services/telecom-solutions",
     type: "website",
   },
   twitter: {

@@ -95,20 +95,6 @@ export default function IndustriesPage() {
                     uncompromising security protocols, and real-time disaster recovery paths.
                   </p>
                 </div>
-                <div className="p-6 bg-surface-container-low rounded-lg border-l-4 border-secondary">
-                  <h4 className="font-label-caps text-on-surface mb-3">Our Recommended Stack</h4>
-                  <ul className="space-y-2 text-sm">
-                    {[
-                      "Low-latency Dark Fiber Architecture",
-                      "Tier-4 Data Center Integrated AV Systems",
-                      "Biometric Security & Surveillance Grids",
-                    ].map((s) => (
-                      <li key={s} className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-xs">check_circle</span> {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
                 <div className="flex gap-8 items-center pt-4 opacity-50 grayscale hover:grayscale-0 transition-all">
                   <span className="font-label-caps">Trusted By:</span>
                   <span className="font-bold text-xl">FINCORP</span>
@@ -135,20 +121,6 @@ export default function IndustriesPage() {
                     industrial-grade wireless that bridges the gap between OT and IT.
                   </p>
                 </div>
-                <div className="p-6 bg-surface-container-low rounded-lg border-l-4 border-secondary">
-                  <h4 className="font-label-caps text-on-surface mb-3">Our Recommended Stack</h4>
-                  <ul className="space-y-2 text-sm">
-                    {[
-                      "Industrial IoT Backbone (LoRaWAN/5G)",
-                      "Ruggedized Structured Cabling",
-                      "Perimeter AI-Analytics Surveillance",
-                    ].map((s) => (
-                      <li key={s} className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-xs">check_circle</span> {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
                 <div className="flex gap-8 items-center pt-4 opacity-50 grayscale hover:grayscale-0 transition-all">
                   <span className="font-label-caps">Trusted By:</span>
                   <span className="font-bold text-xl">AUTO-LINE</span>
@@ -170,12 +142,12 @@ export default function IndustriesPage() {
             <div
               key={title}
               id={title.toLowerCase().replace(/[^a-z]+/g, "-")}
-              className="bg-white p-8 border border-outline-variant hover:border-primary transition-all scroll-mt-28"
+              className="bg-white p-8 border border-outline-variant hover:border-primary transition-all scroll-mt-28 flex flex-col h-full"
             >
               <span className="material-symbols-outlined text-4xl text-secondary mb-4 block">{icon}</span>
               <h3 className="font-h3 text-h3 mb-3">{title}</h3>
               <p className="text-sm text-on-surface-variant mb-6">{desc}</p>
-              <div className="pt-4 border-t border-surface-container">
+              <div className="pt-4 border-t border-surface-container mt-auto">
                 <span className="font-label-caps text-[10px]">KEY STACK</span>
                 <p className="text-xs font-bold uppercase mt-1">{stack}</p>
               </div>

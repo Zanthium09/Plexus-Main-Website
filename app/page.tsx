@@ -6,7 +6,6 @@ import Image from "next/image";
 import AnimateIn, { StaggerContainer } from "@/components/AnimateIn";
 import CountUpStats from "@/components/CountUpStats";
 import BrandsMarquee from "@/components/BrandsMarquee";
-import CertificationsCarousel from "@/components/CertificationsCarousel";
 import HeroSection from "@/components/HeroSection";
 
 import {
@@ -76,11 +75,6 @@ const aboutImg1 =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBlm7CkNYx6ffEEV29s9lAj1G_8RBpgBYTPalG7eCNLJQd5n4sYj1Sz9bco_uEY6uqdYYRu0GgovFtXMfUTYzEacOvBpsx59rPFqnTOJr28ImCNGrYGLTgwjqd_SlUBlu6_8u5DDv3ASD9YcmdQIQBJ3rqk2IhnoUMTB_PeqRm1QddlPwpLKc6NON-35V8aY8R8QAwvPquhRHJ37djeujhFIiaGNPiCrS5xbZTZ3hvbPso9WgdMDaPGKUg2uZOyTKpI9smIDY1W4S3n";
 const aboutImg2 =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCv2V4ivufhig8i2drs4uuBGFfvCQ4ft7ga5uARQSB7EtmGp8WiCNkEedQXE7mukaD-44WCyrJg4NYzicr49v6Ox9bemJ8ftUfh_xuXfhAx2H42FpYrSBokrm7HLStZGOo44JJeusDuBKiT5ADB1xD21mMmfV-a9ZOOeKVNYb7Lu4XaSEY5oNfdMfi_hmGEfA7uRKOHg1rdEkxwbrmve1WQoQDnaZxxxKaQWhUx-gNPvFsff6AJkicBXsnrcuAO4NdnaheDajdu3Q0x";
-const caseImgs = [
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBD0BgRs0h7J3gCcTvKdO9c7tw7JslMjl935JQL9rAMRERvIh-G9GrohJjwY3MZqnKhadGsEhQ6nXICzdF8dlOACcr7sSzdd9MTMquKOsc8U0OCVMFUxtAr4wU1_2AlohrjD4f8nf9k9Vjna33rOgIF0s58eCmhGBz97hXdvG7UfUswtN18Eczj6A9-2ErztoGf9aMIgIFLptRfKENtJTwWOE1V-H_6fXlZrV38CQ3Ngg9SQtv0YfgPd2bUCMm-k8FKDOSeKb4YY0ZX",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAKAd9y9unlgYGcYnZqFAADfyBbp-tQsZwggTrp-bNhLVHo8p_o4GJndbPZF6iSEAXIOKmpIJbvUIkjqI-FV3k3r0nmf4LAIvWlXnhY2zaEq4fLmazD3ydVJ9A8eIVZwPiL9G-yn5-813sPypk1bYKQzKIrNZndUGIAhQaWTjhi1uquxoQxlApN1LSqb6UgTvLJHMfRVfKVCq_yQgCpUD2mFWuAIiHI8WgO8N5yLazn3iZuuYO67XvvQbMz6R11m9J2lFlLF60csa7q",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBfxbqogWuZfzMMHD4TwjWPdQvxSq2-kiBBaHPc7oun027H7dhaArwVPoHQ5BwX_Yipzw11HiqIFqsZ5rTSN4i67H2fLAxwEBgb2eMnyY7W0Oumn_XJdA0GJ2v2atvsMy-Z5cxrQ8P6haKAJcLMeX016li4Cv-pgiTtDLJwxKR0m-RIDA5NYbu6ArC5kECv2tmgAPcc9yD-0lGioQTmXc3acEIN9T3WW3GYwMZMdoTHDKSvxmHeUDe5J6qFxbXt4LoifAOTaHi6cBQ4",
-];
 
 export default function HomePage() {
   return (
@@ -110,29 +104,66 @@ export default function HomePage() {
               <div>
                 <span className="font-label-caps text-secondary">OUR IDENTITY</span>
                 <h2 className="font-h2 text-h2 text-primary mt-4 mb-6">
-                  A hardcore Sales and Service organization dedicated to your growth
+                  We are the distributer of Matrix, Dahua and Legrand.
                 </h2>
                 <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
-                  We don&apos;t just sell equipment; we design the vital infrastructure
+                  We don&apos;t just sell equipment, we design the vital infrastructure
                   that keeps your business connected, secure, and operational around
                   the clock.
                 </p>
                 <StaggerContainer className="grid grid-cols-2 gap-6" staggerDelay={0.1}>
                   {[
-                    ["verified", "Certified Expertise"],
-                    ["settings_suggest", "Custom Integration"],
-                    ["support_agent", "24/7 Support"],
-                    ["hub", "Pan-India Reach"],
-                  ].map(([icon, title]) => (
-                    <div
+                    {
+                      logo: "/partanersLOGO/matrix.png",
+                      title: "Matrix Distributer",
+                      subtitle: "Telecom & Security Solutions",
+                      href: "/products?brand=Matrix",
+                    },
+                    {
+                      logo: "/partanersLOGO/dahua.png",
+                      title: "Dahua Distributer",
+                      subtitle: "Video Surveillance & Security Solutions",
+                      href: "/products?brand=Dahua",
+                    },
+                    {
+                      logo: "/partanersLOGO/legrand.png",
+                      title: "Legrand Distributer",
+                      subtitle: "Electrical & Digital Building Solutions",
+                      href: "/products?brand=Legrand",
+                    },
+                    {
+                      icon: "hub",
+                      title: "Pan-India Reach",
+                      subtitle: "Delivering Across Every Corner of India",
+                      href: "/contact",
+                    },
+                  ].map(({ logo, icon, title, subtitle, href }) => (
+                    <Link
                       key={title}
-                      className="p-6 bg-surface border border-outline-variant hover:border-primary transition-colors"
+                      href={href}
+                      className="p-6 rounded-2xl bg-surface border border-outline-variant hover:border-primary hover:shadow-lg transition-all flex flex-col items-center justify-center text-center group"
                     >
-                      <span className="material-symbols-outlined text-secondary text-4xl mb-4 block">
-                        {icon}
-                      </span>
+                      <div className="rounded-xl bg-primary/10 p-4 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                        {logo ? (
+                          <Image
+                            src={logo}
+                            alt={title}
+                            width={400}
+                            height={260}
+                            className="h-10 w-auto object-contain"
+                          />
+                        ) : (
+                          <span className="material-symbols-outlined text-secondary text-4xl block">
+                            {icon}
+                          </span>
+                        )}
+                      </div>
                       <h3 className="font-h3 text-sm mb-2">{title}</h3>
-                    </div>
+                      <p className="text-xs text-on-surface-variant mb-4">{subtitle}</p>
+                      <span className="w-9 h-9 rounded-full border border-primary text-primary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-white">
+                        <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                      </span>
+                    </Link>
                   ))}
                 </StaggerContainer>
               </div>
@@ -273,16 +304,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-<section className="py-20 border-y border-outline-variant bg-white overflow-hidden">
-  <div className="max-w-[1280px] mx-auto px-6 mb-12">
-    <AnimateIn direction="up">
-      <h2 className="font-label-caps text-center text-on-surface-variant">
-        STRATEGIC TECHNOLOGY PARTNERS
-      </h2>
-    </AnimateIn>
-  </div>
-  <BrandsMarquee />
-</section>
+      <section className="py-20 border-y border-outline-variant bg-white overflow-hidden">
+        <div className="max-w-[1280px] mx-auto px-6 mb-12">
+          <AnimateIn direction="up">
+            <h2 className="font-label-caps text-center text-on-surface-variant">
+              STRATEGIC TECHNOLOGY PARTNERS
+            </h2>
+          </AnimateIn>
+        </div>
+        <BrandsMarquee />
+      </section>
       {/* ── Industries ──────────────────────────────────────────────── */}
       <section className="section-padding bg-background">
         <div className="max-w-[1280px] mx-auto px-6">
@@ -310,60 +341,6 @@ export default function HomePage() {
           </StaggerContainer>
         </div>
       </section>
-
-      {/* ── Featured Deployments ─────────────────────────────────────── */}
-      <section className="section-padding bg-surface-container">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <AnimateIn direction="up">
-            <h2 className="font-h2 text-h2 mb-12">Featured Deployments</h2>
-          </AnimateIn>
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-gutter" staggerDelay={0.1}>
-            {[
-              {
-                tag: "NETWORKING",
-                title: "Unified Backbone for Fortune 500 HQ",
-                desc: "Deploying 10Gbps structured cabling across 20 floors with zero downtime.",
-                img: caseImgs[0],
-              },
-              {
-                tag: "AV INTEGRATION",
-                title: "Digital Boardroom for Tech Giant",
-                desc: "Seamless Bose audio and Poly video integration for multi-national collaboration.",
-                img: caseImgs[1],
-              },
-              {
-                tag: "SECURITY",
-                title: "City-Wide Surveillance Network",
-                desc: "Integrating 500+ AI-enabled Hikvision cameras into a central command hub.",
-                img: caseImgs[2],
-              },
-            ].map((c) => (
-              <div key={c.title} className="group cursor-pointer block">
-                <div className="overflow-hidden mb-6">
-                  <Image
-                    src={c.img}
-                    alt={c.title}
-                    width={600}
-                    height={400}
-                    className="aspect-video w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <span className="font-label-caps text-secondary">{c.tag}</span>
-                <h3 className="font-h3 text-xl mt-2 mb-4 group-hover:text-secondary transition-colors">
-                  {c.title}
-                </h3>
-                <p className="text-sm text-on-surface-variant">{c.desc}</p>
-              </div>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
- {/* ── Certifications ──────────────────────────────────────────── */}
-<section className="section-padding bg-white">
-    <CertificationsCarousel />
-  
-</section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
       <section className="bg-primary text-on-primary py-24 relative overflow-hidden">

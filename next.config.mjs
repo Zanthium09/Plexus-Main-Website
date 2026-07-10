@@ -36,6 +36,11 @@ const nextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self'; object-src 'none'; base-uri 'self'",
+          },
         ],
       },
       {
@@ -72,7 +77,13 @@ const nextConfig = {
       { source: "/our-services", destination: "/services", permanent: true },
       {
         source: "/telecom",
-        destination: "/telecom-solutions",
+        destination: "/services/telecom-solutions",
+        permanent: true,
+      },
+      // Old sitemap advertised this URL — redirect anyone who indexed it
+      {
+        source: "/telecom-solutions",
+        destination: "/services/telecom-solutions",
         permanent: true,
       },
     ];

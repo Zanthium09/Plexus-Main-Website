@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -938,10 +939,26 @@ const PAGE_SIZE = 9;
 // ─── component ────────────────────────────────────────────────────────────────
 
 export default function ProductsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProductsPageInner />
+    </Suspense>
+  );
+}
+
+function ProductsPageInner() {
+  const searchParams = useSearchParams();
   const [activeBrand, setActiveBrand] = useState<BrandKey>("Matrix");
   const [brandCat, setBrandCat] = useState("All");
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const brand = searchParams.get("brand");
+    if (brand && BRANDS.includes(brand as BrandKey)) {
+      setActiveBrand(brand as BrandKey);
+    }
+  }, [searchParams]);
 
   const switchBrand = (brand: BrandKey) => {
     setActiveBrand(brand);
@@ -1038,7 +1055,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Brand tabs */}
-          <div className={`flex border-b-2 border-outline-variant mb-10 ${searchQuery ? "opacity-40 pointer-events-none" : ""}`}>
+          <div className={`flex justify-evenly border-b-2 border-outline-variant mb-10 ${searchQuery ? "opacity-40 pointer-events-none" : ""}`}>
             {BRANDS.map((brand) => (
               <button
                 key={brand}
